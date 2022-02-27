@@ -1,7 +1,7 @@
 export class Url {
 
-    static readonly BACK_HOST = "http://localhost:8080/library/";
-    static readonly BACK_HOST_LOGIN = "http://localhost:8080/login";
+    static readonly BACK_HOST = "https://library-back-deve.herokuapp.com/library/";
+    static readonly BACK_HOST_LOGIN = "https://library-back-deve.herokuapp.com/login";
 
     static readonly routerUrl = {
         "error" : "error"

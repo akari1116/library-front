@@ -1,6 +1,7 @@
 import { Component, OnInit,  ElementRef, ViewChild, Renderer2, AfterViewInit} from '@angular/core';
 import { SectionService } from '../../service/section/section.service';
 import { Section } from 'src/app/model/Section';
+import { Router } from '@angular/router';
 
 
 
@@ -16,17 +17,23 @@ export class TopComponent implements OnInit, AfterViewInit {
   @ViewChild('thisdom') thisdom?: ElementRef;
   @ViewChild('thislink') thislink?: ElementRef;
 
-  constructor(private sectionService : SectionService, private renderer2: Renderer2) {
+
+  constructor(private sectionService : SectionService, private renderer2: Renderer2, private router:Router) {
+
   }
 
   ngOnInit(): void {
-    // if (window.name != "any") {
-    //     location.reload();
-    //     window.name = "any";
-    //   } else {
-    //     window.name = "";
-    //   }
-    } 
+    if(sessionStorage.getItem("Authorization") == null) {
+      this.router.navigate(["login"]);
+    }
+
+    if (window.name != "any") {
+      location.reload();
+      window.name = "any";
+    } else {
+      window.name = "";
+    }
+  } 
   
   ngAfterViewInit() {
     //大区分リスト取得

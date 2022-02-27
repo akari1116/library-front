@@ -36,9 +36,12 @@ export class LoginServiceService {
   }
 
   getLoginData(bookData : Response) : Promise<any> {
+               console.log("トークン" + localStorage.getItem("Authorization"));
+
     return new Promise((resolve, reject) => {
         this.login(bookData).subscribe((data:any) => {
           this.storeToken(data);
+          // console.log("トークン" + localStorage.getItem("Authorization"));
           // let 
           // if(localStorage.getItem("Authorization") == null) {
 
@@ -62,11 +65,7 @@ export class LoginServiceService {
     //トークンをローカルストレージにセット
     let token  = res.headers.get('Authorization');
     if(token != null) {
-      localStorage.setItem("Authorization", token);
+      sessionStorage.setItem("Authorization", token);
     }
   }
-
-  // exsistToken() : boolean {
-  //   if(localStorage.getItem)
-  // }
 }
